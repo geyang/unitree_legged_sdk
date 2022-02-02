@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(unitree_legged_sdk)
 
 include_directories(include)
+include_directories(lcm-types)
 
 link_directories(lib)
 
@@ -37,3 +38,7 @@ target_link_libraries(udp_recv_test ${EXTRA_LIBS})
 # lcm server
 add_executable(lcm_server examples/lcm_server.cpp)
 target_link_libraries(lcm_server ${EXTRA_LIBS})
+
+# legged_gym custom lcm server
+add_executable(legged_gym_lcm_server examples/legged_gym_lcm_server.cpp)
+target_link_libraries(legged_gym_lcm_server ${EXTRA_LIBS})

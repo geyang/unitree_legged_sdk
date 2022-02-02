@@ -11,7 +11,8 @@ RUN apt-get install -y libglib2.0-dev
 
 # install lcm
 
-RUN cd /home/$USERNAME && git clone https://github.com/lcm-proj/lcm.git && cd lcm && mkdir build && cd build && cmake .. && make -j && make install
+RUN mkdir /scratch && mkdir /scratch/unitree
+RUN cd /scratch/unitree && git clone https://github.com/lcm-proj/lcm.git && cd lcm && mkdir build && cd build && cmake .. && make -j && make install
 
 # install boost
 
