@@ -107,19 +107,6 @@ namespace UNITREE_LEGGED_SDK
 		uint32_t crc;
 	} LowState;                            // low level feedback
 
-	typedef struct
-	{
-		float q[12];
-		float qd[12];
-		float quat[4];
-		float rpy[3];
-		float aBody[3];
-		float omegaBody[3];
-		int64_t timestamp_us;
-		int64_t id;
-	} LowStateSimple;                            // low level feedback
-
-
 	typedef struct 
 	{
 		uint8_t levelFlag;
@@ -133,18 +120,6 @@ namespace UNITREE_LEGGED_SDK
 		uint32_t reserve;
 		uint32_t crc;
 	} LowCmd;                              // low level control
-
-    typedef struct
-	{
-		float q_des[12];
-		float qd_des[12];
-		float tau_ff[12];
-		float kp[12];
-		float kd[12];
-		int64_t timestamp_us;
-		int64_t id;
-	} LowCmdSimple;                            // low level feedback
-
 
 	typedef struct
 	{

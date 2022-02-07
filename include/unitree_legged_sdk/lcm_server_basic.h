@@ -34,7 +34,6 @@ public:
     LCM mylcm;
     LowCmd cmd = {0};
     LowState state = {0};
-    LowCmdSimple cmd_simple = {0};
     state_estimator_lcmt body_state_simple = {0};
     leg_control_data_lcmt joint_state_simple = {0};
 
@@ -60,6 +59,7 @@ void Lcm_Server_Low::LCMRecv()
 void Lcm_Server_Low::RobotControl()
 {
     udp.GetRecv(state);
+    printf("%f\n", state.imu.quaternion[2]);
 
     // transcribe simple state
     for(int i = 0; i < 12; i++){
@@ -75,12 +75,14 @@ void Lcm_Server_Low::RobotControl()
         body_state_simple.omegaBody[i] = state.imu.gyroscope[i];
     }
     std::cout << "q0 " <<  joint_state_simple.q[0] << "\n";
+    std::cout << "roll " <<  body_state_simple.rpy[0] << "\n";
+    printf("%f\n", state.imu.quaternion[2]);
 
-    //mylcm.Send(state_simple);
+    mylcm.Send(state);
     _simpleLCM.publish("body_state_simple", &body_state_simple);
     _simpleLCM.publish("joint_state_simple", &joint_state_simple);
 
-    //mylcm.Get(cmd);
+    mylcm.Get(cmd);
     //_simpleLCM.handle();
     // TODO: transcribe simple cmd
 

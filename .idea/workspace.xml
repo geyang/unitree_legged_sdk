@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01712820-038a-4de5-a991-8c9464770644" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/legged_gym_lcm_server.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lcm-types/leg_control_data_lcmt.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lcm-types/leg_control_data_lcmt.lcm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lcm-types/pd_tau_targets_lcmt.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lcm-types/pd_tau_targets_lcmt.lcm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lcm-types/state_estimator_lcmt.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lcm-types/state_estimator_lcmt.lcm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/unitree_legged_sdk/comm.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/unitree_legged_sdk/comm.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/unitree_legged_sdk/lcm.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/unitree_legged_sdk/lcm.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/unitree_legged_sdk/lcm_server_basic.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/unitree_legged_sdk/lcm_server_basic.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
