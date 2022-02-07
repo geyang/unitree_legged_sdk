@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(unitree_legged_sdk)
 
 include_directories(include)
+include_directories(include/lcm_types)
 
 link_directories(lib)
 
@@ -37,3 +38,8 @@ target_link_libraries(udp_recv_test ${EXTRA_LIBS})
 # lcm server
 add_executable(lcm_server examples/lcm_server.cpp)
 target_link_libraries(lcm_server ${EXTRA_LIBS})
+
+# lcm server simple
+add_executable(lcm_server_basic examples/lcm_server_basic.cpp)
+target_link_libraries(lcm_server_basic ${EXTRA_LIBS})
+

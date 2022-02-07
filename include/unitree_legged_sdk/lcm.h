@@ -56,18 +56,24 @@ namespace UNITREE_LEGGED_SDK
         void SubscribeState();         // remember to call this when change control level
         int Send(HighCmd&);            // lcm send cmd
         int Send(LowCmd&);             // lcm send cmd
+        int Send(LowCmdSimple&);             // lcm send cmd
         int Send(HighState&);          // lcm send state
         int Send(LowState&);           // lcm send state
+        int Send(LowStateSimple&);           // lcm send state
 		int Recv();                    // directly save in buffer
         void Get(HighCmd&);
         void Get(LowCmd&);
+        void Get(LowCmdSimple&);
         void Get(HighState&);
         void Get(LowState&);
+        void Get(LowStateSimple&);
 
         LCMHandler<HighState>   highStateLCMHandler;
         LCMHandler<LowState>    lowStateLCMHandler;
+        LCMHandler<LowStateSimple>    lowStateSimpleLCMHandler;
         LCMHandler<HighCmd>     highCmdLCMHandler;
         LCMHandler<LowCmd>      lowCmdLCMHandler;
+        LCMHandler<LowCmdSimple>      lowCmdSimpleLCMHandler;
     private:
         uint8_t levelFlag = HIGHLEVEL;   // default: high level
         lcm::LCM lcm;
