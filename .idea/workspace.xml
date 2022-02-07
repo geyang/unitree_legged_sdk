@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01712820-038a-4de5-a991-8c9464770644" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/examples/lcm_position.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/unitree_legged_sdk/comm.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/unitree_legged_sdk/comm.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/unitree_legged_sdk/lcm.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/unitree_legged_sdk/lcm.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/unitree_legged_sdk/lcm_server_basic.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/unitree_legged_sdk/lcm_server_basic.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/send_to_unitree.sh" beforeDir="false" afterPath="$PROJECT_DIR$/send_to_unitree.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +36,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/examples" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
