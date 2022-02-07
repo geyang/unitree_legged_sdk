@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.8 (legged_gym)" project-jdk-type="Python SDK" />
+=======
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.8 (legged_gym_clean)" project-jdk-type="Python SDK" />
+>>>>>>> 132eabcaf30feb129fac4283a5d4bb8327948f1c
 </project>
