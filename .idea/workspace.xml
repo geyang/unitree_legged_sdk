@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01712820-038a-4de5-a991-8c9464770644" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/examples/lcm_position.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/lcm_position.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/examples/lcm_position.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/send_to_unitree.sh" beforeDir="false" afterPath="$PROJECT_DIR$/send_to_unitree.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,6 +16,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/include/unitree_legged_sdk/quadruped.h" root0="FORCE_HIGHLIGHTING" />
@@ -35,6 +42,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
@@ -51,6 +60,7 @@
       <option name="presentableId" value="Default" />
       <updated>1643840285850</updated>
       <workItem from="1643840287070" duration="23000" />
+      <workItem from="1645294962320" duration="14112000" />
     </task>
     <servers />
   </component>

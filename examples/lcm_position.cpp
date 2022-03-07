@@ -3,6 +3,7 @@
 ******************************************************************/
 
 #include "unitree_legged_sdk/unitree_legged_sdk.h"
+#include "unitree_legged_sdk/unitree_joystick.h"
 #include <math.h>
 #include <iostream>
 #include <stdio.h>
@@ -12,6 +13,7 @@
 #include "state_estimator_lcmt.hpp"
 #include "leg_control_data_lcmt.hpp"
 #include "pd_tau_targets_lcmt.hpp"
+#include "rc_command_lcmt.hpp"
 
 using namespace std;
 using namespace UNITREE_LEGGED_SDK;
@@ -51,6 +53,9 @@ public:
     state_estimator_lcmt body_state_simple = {0};
     leg_control_data_lcmt joint_state_simple = {0};
     pd_tau_targets_lcmt joint_command_simple = {0};
+    rc_command_lcmt rc_command = {0};
+
+    xRockerBtnDataStruct _keyData;
 
 };
 
@@ -127,7 +132,19 @@ void Custom::RobotControl()
     motiontime++;
     udp.GetRecv(state);
     // printf("%d  %f\n", motiontime, state.motorState[FR_2].q);
-    printf("%d  %f\n", motiontime, state.imu.quaternion[2]);
+    // printf("%d  %f\n", motiontime, state.imu.quaternion[2]);
+
+    memcpy(&_keyData, state.wirelessRemote, 40);
+
+    rc_command.left_stick[0] = _keyData.lx;
+    rc_command.left_stick[1] = _keyData.ly;
+    rc_command.right_stick[0] = _keyData.rx;
+    rc_command.right_stick[1] = _keyData.ry;
+    rc_command.right_lower_right_switch = _keyData.btn.components.R2;
+    rc_command.right_upper_switch = _keyData.btn.components.R1;
+    rc_command.left_lower_left_switch = _keyData.btn.components.L2;
+    rc_command.left_upper_switch = _keyData.btn.components.L1;
+
 
     // publish state to LCM
     for(int i = 0; i < 12; i++){
@@ -142,23 +159,24 @@ void Custom::RobotControl()
         body_state_simple.aBody[i] = state.imu.accelerometer[i];
         body_state_simple.omegaBody[i] = state.imu.gyroscope[i];
     }
-    for(int i = 0; i < 12; i++){
-        std::cout << " " <<  joint_state_simple.q[i];
-    }
-    std::cout << "\n";
-    std::cout << "roll " <<  body_state_simple.rpy[0] << "\n";
-    printf("%f\n", state.imu.quaternion[2]);
+//    for(int i = 0; i < 12; i++){
+//        std::cout << " " <<  joint_state_simple.q[i];
+//    }
+//    std::cout << "\n";
+//    std::cout << "roll " <<  body_state_simple.rpy[0] << "\n";
+//    printf("%f\n", state.imu.quaternion[2]);
 
     _simpleLCM.publish("state_estimator_data", &body_state_simple);
     _simpleLCM.publish("leg_control_data", &joint_state_simple);
+    _simpleLCM.publish("rc_command", &rc_command);
 
     //end lcm publish
 
     // verify received message
-    std::cout << "first command received: " << _firstCommandReceived << "\n";
-    if(_firstCommandReceived){
-        printf("joint position commanded:  %f\n", joint_command_simple.q_des[0]);
-    }
+//    std::cout << "first command received: " << _firstCommandReceived << "\n";
+//    if(_firstCommandReceived){
+//        printf("joint position commanded:  %f\n", joint_command_simple.q_des[0]);
+//    }
     if(_firstRun && joint_state_simple.q[0] != 0){
         for(int i = 0; i < 12; i++){
             joint_command_simple.q_des[i] = joint_state_simple.q[i];
@@ -166,11 +184,14 @@ void Custom::RobotControl()
         _firstRun = false;
     }
 
-    std::cout << "command ";
-    for(int i = 0; i < 12; i++){
-        std::cout << " " <<  joint_command_simple.q_des[i];
-    }
-    std::cout << "\n";
+//    std::cout << "command ";
+//    for(int i = 0; i < 12; i++){
+//        std::cout << " " <<  joint_command_simple.q_des[i];
+//    }
+//    std::cout << "\n";
+
+
+
 
     // gravity compensation
     //cmd.motorCmd[FR_0].tau = -0.65f;
@@ -236,13 +257,30 @@ void Custom::RobotControl()
 //    if(motiontime > 10){
 
     safe.PositionLimit(cmd);
-    int res1 = safe.PowerProtect(cmd, state, 1);
+    int res1 = safe.PowerProtect(cmd, state, 13);
+    // std::cout << "power protection 8 \n";
     // You can uncomment it for position protection
     // int res2 = safe.PositionProtect(cmd, state, 0.087);
-    if(res1 < 0) exit(-1);
-//    }
+    // printf("%u\n", _keyData.btn.components.L2);
+    // if(res1 < 0) exit(-1);
 
-    udp.SetSend(cmd);
+    if(_keyData.btn.components.L2 > 0){
+        sleep(0.1);
+        //std::cout << "ESTOP\n";
+    } else if(res1 < 0){
+        std::cout << "ESTOP\n";
+        while(_keyData.btn.components.R2 == 0){
+            // wait for estop button press
+            sleep(0.1);
+            //
+            udp.GetRecv(state);
+            memcpy(&_keyData, state.wirelessRemote, 40);
+        }
+        std::cout << "END ESTOP\n";
+    }
+    else{
+        udp.SetSend(cmd);
+    }
 
 }
 
