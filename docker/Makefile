@@ -15,3 +15,6 @@ run:
 	    --net=host \
 	    --workdir="/unitree_legged_sdk" \
 	    unitree-sdk /unitree_legged_sdk/docker/entrypoint.sh
+release:
+        docker tag unitree-sdk episodeyang/unitree-sdk
+        docker push episodeyang/unitree-sdk
